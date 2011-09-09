@@ -35,7 +35,7 @@ syn region markdownH6 matchgroup=markdownHeadingDelimiter start="#######\@!" end
 
 syn match markdownBlockquote ">\s" contained nextgroup=@markdownBlock
 
-syn region markdownCodeBlock start="    \|\t" end="$" contained
+syn match markdownCodeBlock /^\s*\n\(\(\s\{4,}[^ ]\|\t\+[^\t]\).*\n\)\+/
 
 " TODO: real nesting
 syn match markdownListMarker " \{0,4\}[-*+]\%(\s\+\S\)\@=" contained
@@ -98,6 +98,9 @@ hi def link markdownItalic                htmlItalic
 hi def link markdownBold                  htmlBold
 hi def link markdownBoldItalic            htmlBoldItalic
 hi def link markdownCodeDelimiter         Delimiter
+
+hi def link markdownCode                  String
+hi def link markdownCodeBlock             String
 
 hi def link markdownEscape                Special
 hi def link markdownError                 Error
